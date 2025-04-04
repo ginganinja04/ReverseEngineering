@@ -23,6 +23,8 @@ Flag: --> flag{r0pp1ng_4r0und_0xc906}
 
 ## ROP 200
 I again used Ghidra to better analyze the binary. Again there is a buffer overflow vulnerability as the program declares a buffer of size 32 but later reads in data of size 80. In this challenge, there is a function checkDate() that contains a system() call and then returns. We want to manipulate the parameter of the system call to use it to our advantage. 
+
+
 ![image](https://github.com/user-attachments/assets/842e6db9-a757-4ad0-82ac-69e7f890dde7)
 
 First, I wanted to see if there were any useful strings within the binary that I could use as a parameter for system(). I used the strings command and found that there was a string 'cat flag.txt'. I began to construct the payload, padding with 40 (32 + 8 for base pointer) characters of 'A'. Then I made sure to add the address of a pop rdi, ret instruction so that I could manipulate the parameter of the system function. I then added the address of the 'cat flag.txt' string, the address of a return instruction, and then the address of the system(). 
