@@ -37,15 +37,22 @@ Solve Script:
 Flag --> flag{r0pp1ng_4r0und_0xc5e2c}
 
 ## ROP 300
+Again I used Ghidra to better analyze the binary. The checkDate() function holds and execve call. We want to manipulate the parameters of the execve call so that we can generate a shell to access the flag file. For this , we need to change the rdi, rsi, and rdx registers. I used the command 'ropper -f rop-300 --search pop' to find the addresses of the pop rdi, pop rsi, and pop rdx instructions. For this binary, the only pop rsi instruction was a pop rsi; pop r15; ret; instruction , which just means we have to account for another null byte. So we need to put the path of /bin/sh into rdi and 0 or null into rsi and rdx. 
 
 
+Solve Script:
+![image](https://github.com/user-attachments/assets/b1b7c2de-eaf4-494f-9114-8ee77d445533)
 
 
-
-
-
+Flag --> flag{r0pp1ng_4r0und_0x4f7cb}
 
 ## ROP 400
+
+
+
+
+
+
 
 
 
