@@ -3,8 +3,6 @@
 **Date:** 4/3/25
 
 
-## Introduction
-
 
 ## ROP 100
 For this challenge we were provided with a binary which I then opened in Ghidra for better analysis.
@@ -48,13 +46,12 @@ Solve Script:
 Flag --> flag{r0pp1ng_4r0und_0x4f7cb}
 
 ## ROP 400
+Unfortunately, I was not able to solve this last challenge. I was able to construct a solve script with the goal of manipulating the rdi and rsi registers before they are sent to the addTwo function - setting rdi to 50 and rsi to 9 so that the syscall executed the execve command. However I believe the is an issue with my solve script either with the buffer or padding variable not being correct or the overall logic of my solution. 
+
+Working solve script:
+
+
+![image](https://github.com/user-attachments/assets/886abf43-343a-47ff-a2bd-02fc3d926382)
 
 
 
-
-
-
-
-
-
-## Conclusion
